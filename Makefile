@@ -6,7 +6,7 @@
 #    By: gleger <gleger@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/26 11:20:41 by gleger            #+#    #+#              #
-#    Updated: 2015/05/02 10:16:23 by gleger           ###   ########.fr        #
+#    Updated: 2015/05/02 10:29:10 by gleger           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,14 +28,14 @@ GLFW = -Lglfw/src -lglfw3 -framework glut -framework Cocoa -framework OpenGL -fr
 
 CC	=	clang
 
-all: gitsub $(NAME)
+all: $(NAME)
 
-gitsub:
+$(GITSUB):
 	git submodule update --init
 	cmake -B./glfw -H./glfw
 	make -C ./glfw
 
-$(NAME): $(OBJECTS) $(HFILE)
+$(NAME): $(GITSUB) $(OBJECTS) $(HFILE)
 	@echo "\033[1;35;m[Linking] \t\t\033[0m: " | tr -d '\n'
 	$(CC) $(FLAGS) $(GLFW) -o $@ $(OBJECTS)
 	@echo "\033[1;32;m[Success] \t\t\t\033[0m"
