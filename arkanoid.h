@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <libft.h>
 # include <stdio.h>
+# include <glfw3.h>
 
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"

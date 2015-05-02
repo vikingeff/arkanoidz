@@ -6,7 +6,7 @@
 #    By: gleger <gleger@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/26 11:20:41 by gleger            #+#    #+#              #
-#    Updated: 2015/05/02 11:36:12 by gleger           ###   ########.fr        #
+#    Updated: 2015/05/02 17:26:37 by gleger           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ $(NAME): $(LIBFT) $(OBJECTS) $(HFILE) arkanoid.h
 
 %.o:		%.c $(HPP)
 	@echo "\033[1;36;m[Compiling $<]\t\033[0m: " | tr -d '\n'
-	$(CC) -c $< $(HEADERS)
+	$(CC) -c $< $(FLAGS) $(HEADERS)
 
 clean:
 	@echo "\033[0;33;m[Cleaning glfw]\033[0m"
