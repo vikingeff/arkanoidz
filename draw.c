@@ -6,69 +6,91 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 13:09:47 by gleger            #+#    #+#             */
-/*   Updated: 2015/05/03 13:15:37 by gleger           ###   ########.fr       */
+/*   Updated: 2015/05/03 15:54:30 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <arkanoid.h>
 
-void 	DrawSquare(t_color colors, float var, float buff, float max)
+void		drawsquare(t_color colors, float index)
 {
-  // Draws a square with a gradient color at coordinates 0, 10
-	// float var = -0.9f;
-	// float buff = 0.08f;
-	// float max = 0.9f;
-	while (var < max)
+	float	loop;
+	float	end;
+	float	size;
+	float	padding;
+
+	loop = -0.9;
+	end = 0.9;
+	size = 0.08;
+	padding = 0.02;
+	while (loop <= end)
 	{
 		glBegin(GL_QUADS);
 		{
 			glColor3f(colors.red, colors.green, colors.blue);
-			glVertex2f(var, max);
+			glVertex2f(loop, index);
 			glColor3f(colors.red * .8, colors.green * .8, colors.blue * .8);
-			glVertex2f(buff+var, max);
+			glVertex2f(loop + size, index);
 			glColor3f(colors.red * .5, colors.green * .5, colors.blue * .5);
-			glVertex2f(buff+var, max-buff);
+			glVertex2f(loop + size, index - size);
 			glColor3f(colors.red * .8, colors.green * .8, colors.blue * .8);
-			glVertex2f(var, max-buff);
+			glVertex2f(loop, index - size);
 		}
-		var=var+buff+0.02;
+		loop = loop + size + padding;
 	}
 	glEnd();
 }
 
-void 	DrawCircle(float cx, float cy, float r, int num_segments) 
-{ 
-	float theta = 2 * 3.1415926 / (float)num_segments; 
-	float c = cosf(theta);//precalculate the sine and cosine
-	float s = sinf(theta);
-	float t;
+void		drawcircle(float cx, float cy, float r, int num_segments)
+{
+	t_circle	myc;
+	int			loop;
 
-	float x = r;//we start at angle = 0 
-	float y = 0; 
-    
+	myc.theta = 2 * 3.1415926 / (float)num_segments;
+	myc.c = ft_cos(theta);
+	myc.x = r;
+	myc.y = 0;
+	loop = -1;
 	glBegin(GL_LINE_LOOP);
-
-	for(int ii = 0; ii < num_segments; ii++) 
-	{ 
-		glVertex2f(x + cx, y + cy);//output vertex 
-        
-		//apply the rotation matrix
-		t = x;
-		x = c * x - s * y;
-		y = s * t + c * y;
-	} 
-	glEnd(); 
+	while (++loop < num_segments)
+	{
+		glVertex2f(myc.x + cx, myc.y + cy);
+		myc.t = myc.x;
+		myc.x = myc.c * myc.x - myc.s * myc.y;
+		myc.y = myc.s * myc.t + myc.c * myc.y;
+	}
+	glEnd();
 }
 
-void	drawmap()
+void		drawmap(void)
 {
 	INIT_COLOR(line1);
-	line1.blue=1.0;
-	DrawSquare(line1, -0.9, 0.08, 0.9);
-	line1.blue=0.0;
-	line1.red=1.0;
-	DrawSquare(line1, -0.8, 0.08, 0.8);
-	line1.red=0.0;
-	line1.green=1.0;
-	DrawSquare(line1, -0.7, 0.08, 0.7);
+	updatecolors(0.0, 0.0, 1.0, &line1);
+	drawsquare(line1, 0.9);
+	updatecolors(1.0, 0.0, 0.0, &line1);
+	drawsquare(line1, 0.8);
+	updatecolors(0.0, 1.0, 0.0, &line1);
+	drawsquare(line1, 0.7);
+	updatecolors(1.0, 0.57, 0.0, &line1);
+	drawsquare(line1, 0.6);
+	updatecolors(0.54, 0.02, 0.77, &line1);
+	drawsquare(line1, 0.5);
+	updatecolors(0.11, 0.75, 0.77, &line1);
+	drawsquare(line1, 0.4);
+}
+
+void		drawpaddle(void)
+{
+	glBegin(GL_QUADS);
+	{
+		glColor3f(0.31, 0.36, 0.36);
+		glVertex2f(-0.75, -0.1);
+		glColor3f(0.31 * .8, 0.36 * .8, 0.36 * .8);
+		glVertex2f(-0.75, 0.1);
+		glColor3f(0.31 * .5, 0.36 * .5, 0.36 * .5);
+		glVertex2f(-0.85, 0.1);
+		glColor3f(0.31 * .8, 0.36 * .8, 0.36 * .8);
+		glVertex2f(-0.85, -0.1);
+	}
+	glEnd();
 }

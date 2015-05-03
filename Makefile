@@ -6,7 +6,7 @@
 #    By: gleger <gleger@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/26 11:20:41 by gleger            #+#    #+#              #
-#    Updated: 2015/05/03 13:11:29 by gleger           ###   ########.fr        #
+#    Updated: 2015/05/03 15:35:35 by gleger           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,9 @@ LIBFT = libft/libft.a
 
 SOURCES = main.c \
 			draw.c \
+			colors.c \
+			game.c \
+			math.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 
@@ -48,7 +51,7 @@ $(NAME): $(LIBFT) $(OBJECTS) $(HFILE) arkanoid.h
 	$(CC) $(FLAGS) $(GLFW) $(LIBFT) -o $@ $(OBJECTS)
 	@echo "\033[1;32;m[Success] \t\t\t\033[0m"
 
-%.o:		%.c $(HPP)
+%.o:		%.c $(HPP) arkanoid.h
 	@echo "\033[1;36;m[Compiling $<]\t\033[0m: " | tr -d '\n'
 	$(CC) -c $< $(FLAGS) $(HEADERS)
 
