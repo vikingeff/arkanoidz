@@ -6,7 +6,7 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/03 13:09:47 by gleger            #+#    #+#             */
-/*   Updated: 2015/05/03 15:54:30 by gleger           ###   ########.fr       */
+/*   Updated: 2015/05/03 16:20:41 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ void		drawcircle(float cx, float cy, float r, int num_segments)
 	int			loop;
 
 	myc.theta = 2 * 3.1415926 / (float)num_segments;
-	myc.c = ft_cos(theta);
+	myc.c = ft_cos(myc.theta);
+	myc.s = ft_sin(myc.theta);
 	myc.x = r;
 	myc.y = 0;
 	loop = -1;
@@ -79,18 +80,18 @@ void		drawmap(void)
 	drawsquare(line1, 0.4);
 }
 
-void		drawpaddle(void)
+void		drawpaddle(float index)
 {
 	glBegin(GL_QUADS);
 	{
 		glColor3f(0.31, 0.36, 0.36);
-		glVertex2f(-0.75, -0.1);
+		glVertex2f(-0.1 + index, -0.75);
 		glColor3f(0.31 * .8, 0.36 * .8, 0.36 * .8);
-		glVertex2f(-0.75, 0.1);
+		glVertex2f(0.1 + index, -0.75);
 		glColor3f(0.31 * .5, 0.36 * .5, 0.36 * .5);
-		glVertex2f(-0.85, 0.1);
+		glVertex2f(0.1 + index, -0.80);
 		glColor3f(0.31 * .8, 0.36 * .8, 0.36 * .8);
-		glVertex2f(-0.85, -0.1);
+		glVertex2f(-0.1 + index, -0.80);
 	}
 	glEnd();
 }

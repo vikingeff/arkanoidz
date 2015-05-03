@@ -6,13 +6,13 @@
 #    By: gleger <gleger@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/26 11:20:41 by gleger            #+#    #+#              #
-#    Updated: 2015/05/03 15:35:35 by gleger           ###   ########.fr        #
+#    Updated: 2015/05/03 17:56:41 by gleger           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = arkanoid
 
-HEADERS = -I libft/ -I ./glfw/include/glfw/ -I.
+HEADERS = -I libft/ -I ./glfw/include/glfw/ -I. -I ~/.brew/include/GL/
 
 LIBFT = libft/libft.a
 

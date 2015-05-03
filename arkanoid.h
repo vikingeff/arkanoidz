@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <libft.h>
 # include <stdio.h>
+# include <glew.h>
 # include <glfw3.h>
 
 # define RED "\033[0;31m"
@@ -47,6 +48,10 @@ typedef struct	s_color
 typedef struct	s_game
 {
 	int			map[LINES][ROWS];
+	float		paddle;
+	float		time_pad;
+	float		ball;
+	float		irl;
 }				t_game;
 
 typedef struct	s_circle
@@ -67,7 +72,7 @@ double			ft_tan(double x);
 
 void			drawmap(void);
 void			drawball(void);
-void			drawpaddle(void);
+void			drawpaddle(float index);
 void			initgame(t_game *grid);
 void			updatecolors(float r, float g, float b, t_color *pane);
 void			drawsquare(t_color colors, float index);
