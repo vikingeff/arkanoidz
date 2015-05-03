@@ -6,7 +6,7 @@
 #    By: gleger <gleger@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/26 11:20:41 by gleger            #+#    #+#              #
-#    Updated: 2015/05/02 17:26:37 by gleger           ###   ########.fr        #
+#    Updated: 2015/05/03 13:11:29 by gleger           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ HEADERS = -I libft/ -I ./glfw/include/glfw/ -I.
 LIBFT = libft/libft.a
 
 SOURCES = main.c \
+			draw.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 

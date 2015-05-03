@@ -33,4 +33,20 @@
 #  define M_PI 3.141592653
 # endif
 
+# define INIT_COLOR(X) t_color X = {.red = 0.0, .blue = 0.0, .green = 0.0}
+
+typedef struct s_color
+{
+	float red;
+	float blue;
+	float green;
+
+}				t_color;
+
+void		drawmap();
+void		drawball();
+void		drawpaddle();
+void 		DrawSquare(t_color colors, float var, float buff, float max);
+void 		DrawCircle(float cx, float cy, float r, int num_segments);
+
 #endif

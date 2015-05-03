@@ -6,7 +6,7 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 08:32:52 by gleger            #+#    #+#             */
-/*   Updated: 2015/05/02 22:12:21 by gleger           ###   ########.fr       */
+/*   Updated: 2015/05/03 13:15:18 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,15 +104,25 @@ int			main(int argc, char **argv)
 		glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
-		glRotatef((float) glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
-		glBegin(GL_TRIANGLES);
-		glColor3f(1.f, 0.f, 0.f);
-		glVertex3f(-0.6f, -0.4f, 0.f);
-		glColor3f(0.f, 1.f, 0.f);
-		glVertex3f(0.6f, -0.4f, 0.f);
-		glColor3f(0.f, 0.f, 1.f);
-		glVertex3f(0.f, 0.6f, 0.f);
-		glEnd();
+		//glRotatef((float) glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
+		// glBegin(GL_TRIANGLES);
+		// glColor3f(1.f, 0.f, 0.f);
+		// glVertex3f(-0.6f, -0.4f, 0.f);
+		// glColor3f(0.f, 1.f, 0.f);
+		// glVertex3f(0.6f, -0.4f, 0.f);
+		// glColor3f(0.f, 0.f, 1.f);
+		// glVertex3f(0.f, 0.6f, 0.f);
+		// glEnd();
+		//t_color line1;
+		glColor3f(1.0f, 1.0f, 1.0f);
+		DrawCircle(0.0f,0.0f,0.015f,10);
+		//DrawSquare(0.0f, 0.0f, 1.0f);
+		drawmap();
+		// glBegin(GL_LINES);
+		// glColor3f(1.0f, 0.0f, 0.0f);
+		// glVertex2f(-1.0f, -1.0f);
+		// glVertex2f(1.0f, 1.0f);
+		// glEnd();
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
