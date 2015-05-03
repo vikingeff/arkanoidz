@@ -18,6 +18,7 @@
 # include <libft.h>
 # include <stdio.h>
 # include <glfw3.h>
+# include <math.h>
 
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
@@ -27,5 +28,9 @@
 # define PURPLE "\033[0;35m"
 # define GRAY "\033[1;30m"
 # define NC "\033[0m"
+
+# ifndef M_PI
+#  define M_PI 3.141592653
+# endif
 
 #endif

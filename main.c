@@ -6,7 +6,7 @@
 /*   By: gleger <gleger@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/02 08:32:52 by gleger            #+#    #+#             */
-/*   Updated: 2015/05/02 17:43:44 by gleger           ###   ########.fr       */
+/*   Updated: 2015/05/02 22:12:21 by gleger           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,17 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 {
 	(void)scancode;
 	(void)mods;
-	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+	if ((key == GLFW_KEY_A || key == GLFW_KEY_ESCAPE) && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
+	if (key ==GLFW_KEY_LEFT)
+		ft_putendl("LEFT");
+	if (key ==GLFW_KEY_RIGHT)
+		ft_putendl("RIGHT");
+	if (key ==GLFW_KEY_UP)
+		ft_putendl("UP");
+	if (key ==GLFW_KEY_DOWN)
+		ft_putendl("DOWN");
+
 }
 
 static void	printinit(char *r, char *v)
@@ -67,10 +76,10 @@ int			main(int argc, char **argv)
 		glfwTerminate();
 		exit(EXIT_FAILURE);
 	}
-	const GLubyte *renderer = glGetString(GL_RENDERER);
-	const GLubyte *version = glGetString(GL_VERSION);
+	// const GLubyte *renderer = glGetString(GL_RENDERER);
+	// const GLubyte *version = glGetString(GL_VERSION);
 
-	printinit((char *)renderer, (char *)version);
+	printinit((char *)glGetString(GL_RENDERER), (char *)glGetString(GL_VERSION));
 	
 	glfwMakeContextCurrent(window);
 	glfwSwapInterval(1);
@@ -95,7 +104,7 @@ int			main(int argc, char **argv)
 		glOrtho(-ratio, ratio, -1.f, 1.f, 1.f, -1.f);
 		glMatrixMode(GL_MODELVIEW);
 		glLoadIdentity();
-		//glRotatef((float) glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
+		glRotatef((float) glfwGetTime() * 50.f, 0.f, 0.f, 1.f);
 		glBegin(GL_TRIANGLES);
 		glColor3f(1.f, 0.f, 0.f);
 		glVertex3f(-0.6f, -0.4f, 0.f);
